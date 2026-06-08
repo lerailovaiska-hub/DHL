@@ -1,0 +1,17 @@
+# Ignore python cache files
+__pycache__/
+*.pyc
+
+# Ignore your scraped datasets so they don't bloat the repository
+*.csv
+*.json
+*.xlsx
+
+# Ignore virtual environments if you use them
+venv/
+.venv/
+.env
+
+# Ignore OS specific files
+.DS_Store
+Thumbs.db
