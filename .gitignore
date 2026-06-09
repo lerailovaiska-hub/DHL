@@ -3,7 +3,6 @@ __pycache__/
 *.pyc
 
 # Ignore your scraped datasets so they don't bloat the repository
-*.csv
 *.json
 *.xlsx
 
