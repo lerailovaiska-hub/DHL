@@ -1,10 +1,9 @@
 /* Login Page Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f4f8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+h1 { 
+    font-family: 'Andale Mono', monospace;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 2.5em;
+    color: SlateBlue;
+    margin-bottom: 10px;
 }
