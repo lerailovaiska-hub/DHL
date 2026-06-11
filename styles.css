@@ -9,12 +9,14 @@ body {
     text-align: center;   
     box-sizing: border-box;
 }
-h1, h2 { 
+h1 { 
     font-family: 'Andale Mono', monospace;
     letter-spacing: 0.01px;
     font-size: 7em;
     color: SlateBlue;
     margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
 }
 p {
     font-family: 'Andale Mono', monospace;
