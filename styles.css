@@ -1,9 +1,63 @@
 /* Login Page Styles */
-h1 { 
+body {
+    display: flex;
+    flex-direction: column;  /* Stacks items vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;   
+    box-sizing: border-box;
+}
+h1, h2 { 
     font-family: 'Andale Mono', monospace;
-    letter-spacing: 2px;
-    text-align: center;
-    font-size: 2.5em;
+    letter-spacing: 0.01px;
+    font-size: 7em;
     color: SlateBlue;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+p {
+    font-family: 'Andale Mono', monospace;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+.login-container {
+    background-color: #f0f0f0;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+label[for="email"],
+label[for="password"] {
+    font-family: 'Andale Mono', monospace;
+    font-size: 1em;
+    color: #333;
+}
+input[type="email"],
+input[type="password"] {
+    font-family: 'Andale Mono', monospace;
+    font-size: 1em;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;    
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+button {
+    font-family: 'Andale Mono', monospace;
+    width: 100%;
+    padding: 10px;
+    background-color: SlateBlue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
 }
