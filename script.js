@@ -4,10 +4,11 @@ const signupForm = document.getElementById('signup-form');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const confirmInput = document.getElementById('confirm-password');
-const signupButton = document.getElementById('signup-button')
+const signupButton = document.getElementById('signup-button');
 const emailError = document.getElementById('email-error');
 const passwordStrength = document.getElementById('passwordStrength');
 const passwordError = document.getElementById('password-error');
+const confirmError = document.getElementById('confirm-error');
 
 // Email Validation
 function validateEmail(email) {
@@ -27,12 +28,12 @@ emailInput.addEventListener('blur', () => {
 // Password Strength Validation
 passwordInput.addEventListener('input', () => {
     const password = passwordInput.value;
-//empty password case
     if (password.length === 0) {
     passwordStrength.textContent = '';
+    passwordStrength.style.display = 'none';
     return;
     }
-
+    passwordStrength.style.display = 'block';
     let strength = 0;
     if (password.length >= 8) strength++;
     if (/[A-Z]/.test(password)) strength++;
@@ -57,19 +58,24 @@ passwordInput.addEventListener('input', () => {
             passwordStrength.style.color = 'green';
             break;
     }   
+    if (strength < 3 && password.length > 0) {
+        showError(passwordError, 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.');
+    } else {
+        clearError(passwordError);
+    }
 });
 
 // ─── Confirm password ────────────────────────────────────────────────────────
 confirmInput.addEventListener('input', () => {
   if (confirmInput.value && confirmInput.value !== passwordInput.value) {
-    showError(passwordError, 'Passwords do not match.');
+    showError(confirmError, 'Passwords do not match.');
   } else {
-    clearError(passwordError);
+    clearError(confirmError);
   }
 });
 
 // ─── Form submission ─────────────────────────────────────────────────────────
-document.querySelector('form').addEventListener('submit', (e) => {
+signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   let valid = true;
@@ -88,7 +94,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
   // Passwords match check
   if (passwordInput.value !== confirmInput.value) {
-    showError(passwordError, 'Passwords do not match.');
+    showError(confirmError, 'Passwords do not match.');
     valid = false;
   }
 
