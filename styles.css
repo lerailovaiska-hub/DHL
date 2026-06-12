@@ -11,12 +11,11 @@ body {
 }
 h1 { 
     font-family: 'Andale Mono', monospace;
-    letter-spacing: 0.01px;
-    font-size: 7em;
+
+    font-size: 5em;
     color: SlateBlue;
     margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
+
 }
 p {
     font-family: 'Andale Mono', monospace;
@@ -25,8 +24,7 @@ p {
 }
 .login-container {
     background-color: #f0f0f0;
-    padding: 40px;
-    border-radius: 10px;
+    padding: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
 }
@@ -36,7 +34,8 @@ label {
     font-weight: bold;
 }
 label[for="email"],
-label[for="password"] {
+label[for="password"],
+label[for="confirm-password"] {
     font-family: 'Andale Mono', monospace;
     font-size: 1em;
     color: #333;
