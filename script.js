@@ -3,87 +3,115 @@ console.log('javascript is working');
 const signupForm = document.getElementById('signup-form');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
-const confirmPasswordInput = document.getElementById('confirm-password');
-const SignupButton = document.getElementById('signup-button')
-
+const confirmInput = document.getElementById('confirm-password');
+const signupButton = document.getElementById('signup-button')
 const emailError = document.getElementById('email-error');
 const passwordStrength = document.getElementById('passwordStrength');
-const confirmPasswordError = document.getElementById('confirm-password-error');
-const passwordMatchError = document.getElementById('password-match-error');
+const passwordError = document.getElementById('password-error');
 
-//email validation
-emailInput.addEventListener('input', () => {
+// Email Validation
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+emailInput.addEventListener('blur', () => {
     const email = emailInput.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!validateEmail(email)) {
         emailError.textContent = 'Please enter a valid email address.';
     } else {
         emailError.textContent = '';
     }
+});
 
-//password strength & validation
-function checkPasswordStrength(password) {
-    const minLength = 8;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumber = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    
-    if (password.length < minLength) {
-        return 'Password must be at least 8 characters long.';
-    }
-    if (!hasUpperCase) {
-        return 'Password must contain at least one uppercase letter.';
-    }
-    if (!hasLowerCase) {
-        return 'Password must contain at least one lowercase letter.';
-    }
-    if (!hasNumber) {
-        return 'Password must contain at least one number.';
-    }
-    if (!hasSpecialChar) {
-        return 'Password must contain at least one special character.';
-    }
-    return null;
-}
-
-function validatePassword() {
+// Password Strength Validation
+passwordInput.addEventListener('input', () => {
     const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
-    
-    // Check password strength
-    const strengthMessage = checkPasswordStrength(password);
-    if (strengthMessage) {
-        passwordStrength.textContent = strengthMessage;
-        return false;
-    } else {
-        passwordStrength.textContent = '';
+//empty password case
+    if (password.length === 0) {
+    passwordStrength.textContent = '';
+    return;
     }
-    
-    // Check if passwords match
-    if (password !== confirmPassword) {
-        passwordMatchError.textContent = 'Passwords do not match.';
-        return false;
-    } else {
-        passwordMatchError.textContent = '';
-    }
-    
-    return true;
+
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[@$!%*?&]/.test(password)) strength++;
+
+    switch (strength) {
+        case 0:
+        case 1:
+            passwordStrength.textContent = 'Weak';
+            passwordStrength.style.color = 'red';
+            break;
+        case 2:
+        case 3:
+            passwordStrength.textContent = 'Medium';
+            passwordStrength.style.color = 'orange';
+            break;
+        case 4:
+        case 5:
+            passwordStrength.textContent = 'Strong';
+            passwordStrength.style.color = 'green';
+            break;
+    }   
+});
+
+// ─── Confirm password ────────────────────────────────────────────────────────
+confirmInput.addEventListener('input', () => {
+  if (confirmInput.value && confirmInput.value !== passwordInput.value) {
+    showError(passwordError, 'Passwords do not match.');
+  } else {
+    clearError(passwordError);
+  }
+});
+
+// ─── Form submission ─────────────────────────────────────────────────────────
+document.querySelector('form').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  let valid = true;
+
+  // Email check
+  if (!validateEmail(emailInput.value.trim())) {
+    showError(emailError, 'Please enter a valid email address.');
+    valid = false;
+  }
+
+  // Password length check
+  if (passwordInput.value.length < 8) {
+    showError(passwordError, 'Password must be at least 8 characters.');
+    valid = false;
+  }
+
+  // Passwords match check
+  if (passwordInput.value !== confirmInput.value) {
+    showError(passwordError, 'Passwords do not match.');
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  // ── Success: simulate account creation ──
+  signupButton.textContent = 'Creating account…';
+  signupButton.disabled    = true;
+
+  setTimeout(() => {
+    // Replace this block with your real backend / Firebase / Supabase call
+    alert('Account created! Redirecting to login…');
+    window.location.href = 'index.html';
+  }, 1500);
+});
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+function showError(el, message) {
+  el.textContent = message;
+  el.style.display = 'block';
 }
 
-passwordInput.addEventListener('input', validatePassword);
-confirmPasswordInput.addEventListener('input', validatePassword);
-
-// Form submission
-signupForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const isEmailValid = !emailError.textContent;
-    const isPasswordValid = validatePassword();
-    
-    if (isEmailValid && isPasswordValid) {
-        alert('Sign up successful!');
-        // Here you can add code to submit the form data to the server
-    } else {
-        alert('Please fix the errors during sign up before submitting.');
-    }
+function clearError(el) {
+  el.textContent = '';
+  el.style.display = 'none';
+}
