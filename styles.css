@@ -24,11 +24,11 @@ p {
     margin-bottom: 20px;
 }
 
-.login-container {
+.container {
     background-color: #f0f0f0;
     padding: 100px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 500px;
 }
 
 label {
