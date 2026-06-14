@@ -1,6 +1,9 @@
+console.log('javascript is working');
+
+// Firebase configuration
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
   
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -16,7 +19,6 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-console.log('javascript is working');
 // input element
 const signupForm = document.getElementById('signup-form');
 const emailInput = document.getElementById('email');
@@ -24,7 +26,7 @@ const passwordInput = document.getElementById('password');
 const confirmInput = document.getElementById('confirm-password');
 const signupButton = document.getElementById('signup-button');
 const emailError = document.getElementById('email-error');
-const passwordStrength = document.getElementById('password-strength');
+const passwordStrength = document.getElementById('passwordStrength');
 const passwordError = document.getElementById('password-error');
 const confirmError = document.getElementById('confirm-password-error');
 
@@ -118,27 +120,22 @@ const strength = getPasswordStrength(passwordInput.value);
 
   if (!valid) return;
 
-  // ── Success: simulate account creation ──
+  //Success: simulate account creation
   signupButton.textContent = 'Creating account…';
   signupButton.disabled    = true;
 
-  setTimeout(() => {
-    // Replace this block with your real backend / Firebase / Supabase call
-    alert('Account created! Redirecting to login…');
-    window.location.href = 'index.html';
-  }, 1500);
-});
-
-// helper functions
-createUserWithEmailAndPassword(auth, email, password)
+  //firebase call
+  createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
     alert('Account created! Redirecting to login…');
     window.location.href = 'index.html';
-  }
-    // ...
   })
+  //...
+)
+    
+// helper functions
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
