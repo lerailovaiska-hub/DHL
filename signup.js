@@ -30,6 +30,28 @@ const passwordStrength = document.getElementById('passwordStrength');
 const passwordError = document.getElementById('password-error');
 const confirmError = document.getElementById('confirm-password-error');
 
+ 
+// helper functions
+function getPasswordStrength(password) {
+    let strength = 0;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[@$!%*?&]/.test(password)) strength++;
+    if (password.length >= 8) strength++;
+  return strength;
+}
+
+function showError(el, message) {
+  el.textContent = message;
+  el.style.display = 'block';
+}
+
+function clearError(el) {
+  el.textContent = '';
+  el.style.display = 'none';
+}
+
 // Email Validation
 function validateEmail(email) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -125,40 +147,16 @@ const strength = getPasswordStrength(passwordInput.value);
   signupButton.disabled    = true;
 
   //firebase call
-  createUserWithEmailAndPassword(auth, email, password)
+  createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
     alert('Account created! Redirecting to login…');
     window.location.href = 'index.html';
   })
-  //...
-)
-    
-// helper functions
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    alert(errorMessage);
-    // ..
+    alert('Error creating account: ' + error.message);
+    signupButton.textContent = 'Sign Up';
+    signupButton.disabled    = false;
   });
-
-function getPasswordStrength(password) {
-    let strength = 0;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[a-z]/.test(password)) strength++;
-    if (/\d/.test(password)) strength++;
-    if (/[@$!%*?&]/.test(password)) strength++;
-    if (password.length >= 8) strength++;
-  return strength;
-}
-
-function showError(el, message) {
-  el.textContent = message;
-  el.style.display = 'block';
-}
-
-function clearError(el) {
-  el.textContent = '';
-  el.style.display = 'none';
-}
+});
