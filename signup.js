@@ -1,7 +1,7 @@
 //firebase
 <script type="module">  
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { get Auth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
   
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -14,11 +14,13 @@
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 </script>
 
 console.log('javascript is working');
-// input elements
+// input element
 const signupForm = document.getElementById('signup-form');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
