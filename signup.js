@@ -27,7 +27,7 @@ const passwordInput = document.getElementById('password');
 const confirmInput = document.getElementById('confirm-password');
 const signupButton = document.getElementById('signup-button');
 const emailError = document.getElementById('email-error');
-const passwordStrength = document.getElementById('passwordStrength');
+const passwordStrength = document.getElementById('password-strength');
 const passwordError = document.getElementById('password-error');
 const confirmError = document.getElementById('confirm-password-error');
 
