@@ -1,3 +1,22 @@
+console.log(' is working');
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBZHPUNPIZoQTUtB8H7Mabxl4qhRu72b7w",
+    authDomain: "dhllogin-26b01.firebaseapp.com",
+    projectId: "dhllogin-26b01",
+    storageBucket: "dhllogin-26b01.firebasestorage.app",
+    messagingSenderId: "623429925197",
+    appId: "1:623429925197:web:ab7c702c72d6342fcf1f04"
+  };
+
+  // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 const loginForm      = document.querySelector('form');
 const emailInput     = document.getElementById('email');
 const passwordInput  = document.getElementById('password');
