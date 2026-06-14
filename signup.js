@@ -8,7 +8,7 @@ const signupButton = document.getElementById('signup-button');
 const emailError = document.getElementById('email-error');
 const passwordStrength = document.getElementById('passwordStrength');
 const passwordError = document.getElementById('password-error');
-const confirmError = document.getElementById('confirm-error');
+const confirmError = document.getElementById('confirm-password-error');
 
 // Email Validation
 function validateEmail(email) {
@@ -58,14 +58,14 @@ passwordInput.addEventListener('input', () => {
             passwordStrength.style.color = 'green';
             break;
     }   
-    if (strength < 3 && password.length > 0) {
+    if (strength < 4 && password.length > 0) {
         showError(passwordError, 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.');
     } else {
         clearError(passwordError);
     }
 });
 
-// ─── Confirm password ────────────────────────────────────────────────────────
+//password confirmation check
 confirmInput.addEventListener('input', () => {
   if (confirmInput.value && confirmInput.value !== passwordInput.value) {
     showError(confirmError, 'Passwords do not match.');
@@ -74,7 +74,7 @@ confirmInput.addEventListener('input', () => {
   }
 });
 
-// ─── Form submission ─────────────────────────────────────────────────────────
+//form submission
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -87,8 +87,16 @@ signupForm.addEventListener('submit', (e) => {
   }
 
   // Password length check
-  if (passwordInput.value.length < 8) {
-    showError(passwordError, 'Password must be at least 8 characters.');
+const password = passwordInput.value;
+let strength = 0;
+if (password.length >= 8) strength++;
+if (/[A-Z]/.test(password)) strength++;
+if (/[a-z]/.test(password)) strength++;
+if (/\d/.test(password)) strength++;
+if (/[@$!%*?&]/.test(password)) strength++;
+
+  if (strength < 4) {
+    showError(passwordError, 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.');
     valid = false;
   }
 
@@ -111,7 +119,7 @@ signupForm.addEventListener('submit', (e) => {
   }, 1500);
 });
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// helper functions
 function showError(el, message) {
   el.textContent = message;
   el.style.display = 'block';
