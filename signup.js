@@ -65,7 +65,7 @@ passwordInput.addEventListener('input', () => {
     }
 });
 
-// ─── Confirm password ────────────────────────────────────────────────────────
+//password confirmation check
 confirmInput.addEventListener('input', () => {
   if (confirmInput.value && confirmInput.value !== passwordInput.value) {
     showError(confirmError, 'Passwords do not match.');
@@ -74,7 +74,7 @@ confirmInput.addEventListener('input', () => {
   }
 });
 
-// ─── Form submission ─────────────────────────────────────────────────────────
+//form submission
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -119,7 +119,7 @@ if (/[@$!%*?&]/.test(password)) strength++;
   }, 1500);
 });
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// helper functions
 function showError(el, message) {
   el.textContent = message;
   el.style.display = 'block';
