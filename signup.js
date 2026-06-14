@@ -18,10 +18,11 @@ function validateEmail(email) {
 
 emailInput.addEventListener('blur', () => {
     const email = emailInput.value;
+    if (email === '') return;
     if (!validateEmail(email)) {
         emailError.textContent = 'Please enter a valid email address.';
     } else {
-        emailError.textContent = '';
+        clearError(emaiError);
     }
 });
 
@@ -120,6 +121,15 @@ if (/[@$!%*?&]/.test(password)) strength++;
 });
 
 // helper functions
+function getPasswordStrength(password) {
+    let strength = 0;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[@$!%*?&]/.test(password)) strength++;
+  return strength;
+}
+
 function showError(el, message) {
   el.textContent = message;
   el.style.display = 'block';
