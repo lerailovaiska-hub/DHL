@@ -1,4 +1,4 @@
-console.log('javascript is working');
+console.log('Signup Page is working');
 
 // Firebase configuration
 
