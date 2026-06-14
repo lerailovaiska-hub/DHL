@@ -1,10 +1,8 @@
 //firebase
-<script type="module">
-  // Import the functions you need from the SDKs you need
+<script type="module">  
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyBZHPUNPIZoQTUtB8H7Mabxl4qhRu72b7w",
@@ -20,7 +18,7 @@
 </script>
 
 console.log('javascript is working');
-// DOM Elements
+// input elements
 const signupForm = document.getElementById('signup-form');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
@@ -133,6 +131,22 @@ const strength = getPasswordStrength(passwordInput.value);
 });
 
 // helper functions
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    alert('Account created! Redirecting to login…');
+    window.location.href = 'index.html';
+  }
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage);
+    // ..
+  });
+
 function getPasswordStrength(password) {
     let strength = 0;
     if (/[A-Z]/.test(password)) strength++;
