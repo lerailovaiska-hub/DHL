@@ -17,6 +17,10 @@ emailInput.addEventListener('blur', () => {
     }
 });
 
+docuument.querySelector('#signup-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const email = emailInput.value;
+    const password = passwordInput.value;
 passwordInput.addEventListener('input', () => {
     const password = passwordInput.value;
     if (password.length < 8) {
