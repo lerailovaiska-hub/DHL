@@ -18,10 +18,11 @@ function validateEmail(email) {
 
 emailInput.addEventListener('blur', () => {
     const email = emailInput.value;
+    if (email === '') return;
     if (!validateEmail(email)) {
         emailError.textContent = 'Please enter a valid email address.';
     } else {
-        emailError.textContent = '';
+        clearError(emailError);
     }
 });
 
@@ -34,12 +35,8 @@ passwordInput.addEventListener('input', () => {
     return;
     }
     passwordStrength.style.display = 'block';
-    let strength = 0;
-    if (password.length >= 8) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[a-z]/.test(password)) strength++;
-    if (/\d/.test(password)) strength++;
-    if (/[@$!%*?&]/.test(password)) strength++;
+
+    const strength = getPasswordStrength(password);
 
     switch (strength) {
         case 0:
@@ -84,16 +81,11 @@ signupForm.addEventListener('submit', (e) => {
   if (!validateEmail(emailInput.value.trim())) {
     showError(emailError, 'Please enter a valid email address.');
     valid = false;
+  } else {
+    clearError(emailError);
   }
 
-  // Password length check
-const password = passwordInput.value;
-let strength = 0;
-if (password.length >= 8) strength++;
-if (/[A-Z]/.test(password)) strength++;
-if (/[a-z]/.test(password)) strength++;
-if (/\d/.test(password)) strength++;
-if (/[@$!%*?&]/.test(password)) strength++;
+const strength = getPasswordStrength(passwordInput.value);
 
   if (strength < 4) {
     showError(passwordError, 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.');
@@ -120,6 +112,16 @@ if (/[@$!%*?&]/.test(password)) strength++;
 });
 
 // helper functions
+function getPasswordStrength(password) {
+    let strength = 0;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[@$!%*?&]/.test(password)) strength++;
+    if (password.length >= 8) strength++;
+  return strength;
+}
+
 function showError(el, message) {
   el.textContent = message;
   el.style.display = 'block';
