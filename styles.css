@@ -1,5 +1,4 @@
-/* Login Page Styles */
-
+// styles.css
 body {
     display: flex;
     flex-direction: column;  /* Stacks items vertically */
@@ -12,42 +11,37 @@ body {
 }
 h1 { 
     font-family: 'Andale Mono', monospace;
-
     font-size: 5em;
     color: SlateBlue;
     margin-bottom: 20px;
 }
-
 p {
     font-family: 'Andale Mono', monospace;
-    font-size: 1em;
+    font-size: 1.2em;
     margin-bottom: 20px;
 }
-
 .container {
     background-color: #f0f0f0;
     padding: 100px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 500px;
 }
-
 label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
-
 label[for="email"],
 label[for="password"],
 label[for="confirm-password"] {
     font-family: 'Andale Mono', monospace;
-    font-size: 1em;
+    font-size: 1.2em;
     color: #333;
 }
 input[type="email"],
 input[type="password"] {
     font-family: 'Andale Mono', monospace;
-    font-size: 1em;
+    font-size: 1.2em;
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;    
@@ -55,7 +49,6 @@ input[type="password"] {
     border-radius: 5px;
     box-sizing: border-box;
 }
-
 button {
     font-family: 'Andale Mono', monospace;
     width: 100%;
@@ -67,10 +60,16 @@ button {
     font-size: 1em;
     cursor: pointer;
 }
-
-error-message {
-    color: red;
+.error-message {
+    color: rgb(0, 0, 0);
+    font-family: 'Andale Mono', monospace;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.password-strength {
     font-family: 'Andale Mono', monospace;
     font-size: 0.9em;
-    margin-top: 10px;
+    font-weight: bold;
 }
