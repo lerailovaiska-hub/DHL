@@ -1,7 +1,7 @@
 console.log('Login Page is working');
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import { getAuth, singInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -77,14 +77,13 @@ loginForm.addEventListener('submit', async (e) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
     // ✅ Login successful — redirect to your app's main page
-    window.location.href = 'afterlogin.html';
+    window.location.href = 'home.html';
   } catch (error) {
     handleFirebaseError(error);
     loginButton.textContent = 'Login';
     loginButton.disabled    = false;
   }
 });
-
 //error handling
 function handleFirebaseError(error) {
   switch (error.code) {

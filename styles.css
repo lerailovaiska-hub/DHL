@@ -79,6 +79,7 @@ button {
     font-size: 0.9em;
     margin-top: 5px;
     margin-bottom: 10px;
+    display: none;
 }
 .password-strength {
     font-family: 'Andale Mono', monospace;
