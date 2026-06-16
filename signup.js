@@ -62,7 +62,7 @@ emailInput.addEventListener('blur', () => {
     const email = emailInput.value;
     if (email === '') return;
     if (!validateEmail(email)) {
-        emailError.textContent = 'Please enter a valid email address.';
+        showError(emailError, 'Please enter a valid email address.');
     } else {
         clearError(emailError);
     }

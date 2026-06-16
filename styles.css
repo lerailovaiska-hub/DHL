@@ -67,3 +67,10 @@ button {
     font-size: 1em;
     cursor: pointer;
 }
+
+error-message {
+    color: red;
+    font-family: 'Andale Mono', monospace;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
