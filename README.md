@@ -1,6 +1,5 @@
-SetUp
-
-git clone https://github.com/lerailovaiska-hub/DHL
+# Set Up 
+- git clone https://github.com/lerailovaiska-hub/DHL
 cd unilife-backend
 python3 -m venv venv
 source venv/bin/activate
