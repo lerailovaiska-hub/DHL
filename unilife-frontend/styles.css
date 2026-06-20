@@ -60,7 +60,7 @@ input[type="password"] {
     border-radius: 5px;
     box-sizing: border-box;
 }
-button {
+.button-style {
     font-family: 'Andale Mono', monospace;
     width: 100%;
     padding: 10px;
