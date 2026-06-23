@@ -6,4 +6,5 @@ source venv/bin/activate<br/>
 pip install flask flask-cors pandas rank-bm25<br/>
 pip install -r requirements.txt
 
-python3 app.py
+python3 app.py<br/>
+(make sure your python version is 3.9.6)
