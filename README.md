@@ -1,10 +1,10 @@
 # Set Up 
 git clone https://github.com/lerailovaiska-hub/DHL <br/>
 cd unilife-backend<br/>
+pyenv local 3.9.6<br/>
 python3 -m venv venv<br/>
 source venv/bin/activate<br/>
 pip install flask flask-cors pandas rank-bm25<br/>
 pip install -r requirements.txt
 
 python3 app.py<br/>
-(make sure your python version is 3.9.6)
