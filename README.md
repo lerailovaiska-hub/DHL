@@ -1,3 +1,6 @@
+# Uni-Life: Multi-Perspective Complex Information-Seeking
+a research project that aims to group university-related information from different resources into one platform.
+
 # Set Up 
 (make sure you are using python version 3.9.6) <br/>
 git clone https://github.com/lerailovaiska-hub/DHL <br/>
