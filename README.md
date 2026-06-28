@@ -13,14 +13,20 @@ pip install -r requirements.txt
 python3 app.py<br/>
 
 ### Project description
-## Unilife backend:
+## UniLife backend:
 clean_posts.py - cleaning function, tokenizer
+
 reddit_posts.txt - scraping reddit 
+
 scraping-programmes.txt - scraping uva programmes
+
 uva_facebook_posts.csv - scraped facebook posts 
+
 search_evaluation.py - search engine evaluation
 
-## Unilife frontend:
+## UniLife frontend:
 home.html, index.html and signup.html - structuring website pages
+
 home.js, index.js and signup.js - interactivity, website behaviour and search engine
+
 styles.css - styling and formatting
