@@ -14,7 +14,7 @@ python3 app.py<br/>
 
 ### Project description
 ## UniLife backend:
-Used to collect data, clean it, and perform quantitative analysis. This code shows the methods that we used to obtain our outcomes through topic modelling and data visualisation. The folder includes both python files and other format files, such as csv's with data and txt files, scraped with API keys. 
+Used to collect data, clean it, and perform quantitative and qualitative analysis. This code shows the methods that we used to obtain our outcomes through topic modelling and data visualisation. The folder includes both python files and other format files, such as csv's with data and txt files, scraped with API keys. 
 
 clean_posts.py - cleaning function, tokenizer
 
